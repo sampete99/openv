@@ -144,6 +144,7 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 						sed -i "/iptables -I FORWARD -s 99.8.0.0\/24 -j ACCEPT/d" $RCLOCAL
 						sed -i "/iptables -I FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT/d" $RCLOCAL
 					fi
+				fi
 				if sestatus 2>/dev/null | grep "Current mode" | grep -q "enforcing" && [[ "$PORT" != '1194' ]]; then
 					semanage port -d -t openvpn_port_t -p $PROTOCOL $PORT
 				fi
@@ -307,6 +308,7 @@ user nobody
 group $GROUPNAME
 persist-key
 persist-tun
+status openvpn-status.log
 verb 0
 log /dev/null
 status /dev/null

@@ -397,7 +397,7 @@ setenv opt block-outside-dns
 key-direction 1
 log /dev/null
 status /dev/null
-verb 0"
+verb 0" > /etc/openvpn/client-common.txt
 	# Generates the custom client.ovpn
 	newclient "$CLIENT"
 	echo
